@@ -33,7 +33,7 @@ form.addEventListener('submit', function(event) {
         newRow.insertCell().textContent = altura;
         newRow.insertCell().textContent = imc;
         newRow.insertCell().textContent = status;
-        newRow.insertCell().innerHTML = '<div class="botao-container"><button class="aumentar-peso">+ Peso</button> <button class="diminuir-peso">- Peso</button> <button class="excluir">Excluir</button></div>';
+        newRow.insertCell().innerHTML = '<div class="button-container"><button class="aumentar-peso">+ Peso</button> <button class="diminuir-peso">- Peso</button> <button class="excluir">Excluir</button></div>';
 
         form.reset();
     }

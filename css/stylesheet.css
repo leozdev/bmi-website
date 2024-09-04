@@ -27,14 +27,16 @@ header {
 
 main {
     grid-area: main;
-    background-color: white;
     text-align: center;
 }
 
 aside {
-    background-color: #ffffff;
+    width: 80%;
+    color: white;
     padding-top: 40px;
+    margin-left: 40px;
     text-align: center;
+    align-items: center;
 }
 
 footer {
@@ -64,15 +66,19 @@ th {
     color: white;
 }
 
+.cadastro {
+    background-color: #191627;
+    border-radius: 20px;
+    padding: 20px;
+    width: 80%;
+}
+
 input {
-    width: calc(50% - 22px);
-    padding: 10px;
-    box-sizing: border-box;
+    width: 50%;
+    padding: 8px;
+    margin: 10px;
     border-radius: 15px;
     border: 1px solid #ccc;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 button {
@@ -83,7 +89,6 @@ button {
     border-radius: 15px;
     padding: 10px;
     font-size: 15px;
-    display: block;
     margin-left: auto;
     margin-right: auto;
 }
@@ -92,11 +97,16 @@ button:hover {
     background-color: #191627;
 }
 
+.btn_cadastro:hover {
+    background-color: white;
+    color: #191627;
+}
+
 button {
     margin-top: 10px;
 }
 
-.botao-container {
+.button-container {
     justify-content: center;
     display: flex;
     gap: 10px;
@@ -108,12 +118,6 @@ button {
 }
 
 form {
-    display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
 }
