@@ -1,1 +1,119 @@
-/* Colocar os estilos aqui */
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "main aside"
+        "footer footer";
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: 100vh;
+    background-color: #f9f9f9;
+}
+
+header, main, aside, footer {
+    padding: 20px;
+}
+
+header {
+    grid-area: header;
+    background-color: #191627;
+    color: white;
+    text-align: center;
+}
+
+main {
+    grid-area: main;
+    background-color: white;
+    text-align: center;
+}
+
+aside {
+    background-color: #ffffff;
+    padding-top: 40px;
+    text-align: center;
+}
+
+footer {
+    grid-area: footer;
+    background-color: #191627;
+    color: white;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px #191627;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    text-align: center;
+    background-color: #191627;
+    color: white;
+}
+
+input {
+    width: calc(50% - 22px);
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button {
+    background-color: #DD7631;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button:hover {
+    background-color: #191627;
+}
+
+button {
+    margin-top: 10px;
+}
+
+.botao-container {
+    justify-content: center;
+    display: flex;
+    gap: 10px;
+}
+
+.aumentar-peso, .diminuir-peso, .excluir  {
+    padding: 5px 10px;
+    margin: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
