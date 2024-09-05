@@ -38,3 +38,46 @@ form.addEventListener('submit', function(event) {
         form.reset();
     }
 });
+
+const btnRemoverMaiorIMC = document.querySelector("#remover-maior-imc");
+btnRemoverMaiorIMC.addEventListener("click", removerMaiorIMC);
+
+const btnRemoverMenorIMC = document.querySelector("#remover-menor-imc");
+btnRemoverMenorIMC.addEventListener("click", removerMenorIMC);
+
+function removerMaiorIMC() {
+    let trs = document.querySelectorAll("tr");
+    if (trs.length > 1) {
+        let maior = trs[1]; 
+        let maiorIMC = parseFloat(maior.querySelectorAll("td")[3].innerText);
+        for (let i = 1; i < trs.length; i++) { 
+            let tds = trs[i].querySelectorAll("td");
+            let IMC = parseFloat(tds[3].innerText);
+            if (IMC > maiorIMC) {
+                maior = trs[i];
+                maiorIMC = IMC;
+            }
+        }
+        maior.remove(); 
+    }else{
+        alert("Não há pessoas para remover!")
+    }
+}
+function removerMenorIMC() {
+    let trs = document.querySelectorAll("tr");
+    if (trs.length > 1) {
+        let menor = trs[1]; 
+        let menorIMC = parseFloat(menor.querySelectorAll("td")[3].innerText);
+        for (let i = 1; i < trs.length; i++) { 
+            let tds = trs[i].querySelectorAll("td");
+            let IMC = parseFloat(tds[3].innerText);
+            if (IMC < menorIMC) {
+                menor = trs[i];
+                menorIMC = IMC;
+            }
+        }
+        menor.remove(); 
+    }else{
+        alert("Não há pessoas para remover!")
+    }
+}
