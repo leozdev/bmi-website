@@ -11,33 +11,78 @@ form.addEventListener('submit', function(event) {
 
     if (peso > 0 && altura > 0) {
         const imc = (peso / (altura * altura)).toFixed(2);
-        let status = '';
-
-        if (imc < 18.5) {
-            status = 'Magreza';
-        } else if (imc < 25) {
-            status = 'Saudável';
-        } else if (imc < 30) {
-            status = 'Sobrepeso';
-        } else if (imc < 35) {
-            status = 'Obesidade I';
-        } else if (imc < 40) {
-            status = 'Obesidade II';
-        } else {
-            status = 'Obesidade III';
-        }
+        let status = statusIMC(imc);
 
         const newRow = tabelaImc.insertRow();
-        newRow.insertCell().textContent = nome;
-        newRow.insertCell().textContent = peso;
-        newRow.insertCell().textContent = altura;
-        newRow.insertCell().textContent = imc;
-        newRow.insertCell().textContent = status;
-        newRow.insertCell().innerHTML = '<div class="button-container"><button class="aumentar-peso">+ Peso</button> <button class="diminuir-peso">- Peso</button> <button class="excluir">Excluir</button></div>';
+
+        const nomeCell = newRow.insertCell();
+        nomeCell.textContent = nome; 
+
+        const pesoCell = newRow.insertCell();
+        pesoCell.textContent = peso;
+
+        const alturaCell = newRow.insertCell();
+        alturaCell.textContent = altura;
+
+        const imcCell = newRow.insertCell();
+        imcCell.textContent = imc;
+
+        const statusCell = newRow.insertCell();
+        statusCell.textContent = status;
+
+        const botaos = newRow.insertCell();
+        botaos.innerHTML = '<div class="button-container"><button class="aumentar-peso">+ Peso</button> <button class="diminuir-peso">- Peso</button> <button class="excluir">Excluir</button></div>';
+        
+        const btnExcluir = botaos.querySelector('.excluir');
+        btnExcluir.addEventListener('click', () => {
+            newRow.remove();
+        });
+
+        const btnAumentarPeso = botaos.querySelector('.aumentar-peso');
+        btnAumentarPeso.addEventListener('click', () => {
+            console.log("clicou no aumentar");
+            peso += 0.5;
+            pesoCell.textContent = peso.toFixed(2);
+            atualizarIMC();
+        });
+
+        const btnDiminuirPeso = botaos.querySelector('.diminuir-peso');
+        btnDiminuirPeso.addEventListener('click', () => {
+            console.log("clicou no diminuir");
+            if (peso > 0.5) {
+                peso -= 0.5;
+                pesoCell.textContent = peso.toFixed(2);
+                atualizarIMC();
+            } else {
+                alert("Não é possivel deixar o peso negativo!");
+            }
+        });
+
+        function atualizarIMC() {
+            const novoIMC = (peso / (altura * altura)).toFixed(2);
+            imcCell.textContent = novoIMC;
+            statusCell.textContent = statusIMC(novoIMC);
+        }
 
         form.reset();
     }
 });
+
+function statusIMC(imc) {
+    if (imc < 18.5) {
+        return 'Magreza';
+    } else if (imc < 25) {
+        return 'Saudável';
+    } else if (imc < 30) {
+        return 'Sobrepeso';
+    } else if (imc < 35) {
+        return 'Obesidade I';
+    } else if (imc < 40) {
+        return 'Obesidade II';
+    } else {
+        return 'Obesidade III';
+    }
+}
 
 const btnRemoverMaiorIMC = document.querySelector("#remover-maior-imc");
 btnRemoverMaiorIMC.addEventListener("click", removerMaiorIMC);
@@ -63,6 +108,7 @@ function removerMaiorIMC() {
         alert("Não há pessoas para remover!")
     }
 }
+
 function removerMenorIMC() {
     let trs = document.querySelectorAll("tr");
     if (trs.length > 1) {
